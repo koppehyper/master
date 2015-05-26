@@ -10,7 +10,13 @@ def f(x):
     return memory[str(x)]
 
 print 'Deploy test!'
+
+with open('output.data') as f: output_data = f.read()
+
+print output_data
+
 for x in range(0, 30):
     print "f(%d) = %d" % (x+1, f(x+1))
+
 
 print 'Deploy end!'
