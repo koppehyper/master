@@ -11,7 +11,7 @@ def f(x):
 
 print 'Deploy test!'
 
-with open('output.data') as f: output_data = f.read()
+with open('output.data') as fp: output_data = fp.read()
 
 print output_data
 
