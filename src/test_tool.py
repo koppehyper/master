@@ -19,6 +19,7 @@ def slack(msg, token, channel, username="Your_bot_name", icon_url='http://i.imgu
     res = requests.get(uri, params=param)
 
 
+    
 def main(build_no):
     token = os.environ.get('SLACK_TOKEN')
     channel = '#testroom'
@@ -29,14 +30,14 @@ def main(build_no):
 
     if is_setting_ok:
         pr_url = local('/usr/local/bin/hub pull-request -F /tmp/pr_msg', capture=True)
-        local('/usr/local/bin/hub merge %s' % pr_url)
+
         local('git merge master')
         local('git checkout master')
-        local('git push origin master')
-        local('git push origin :test_push', capture=True)
+        print local('git merge --no-ff test_push', capture=True)
+        print local('git push origin master', capture=True)
+        print local('git push origin :test_push', capture=True)
         
         msg = '\n'.join(['Build Passing (Merged!)', str(pr_url)])
-        
         icon_url = ':clean:'
 
         slack (msg, token, channel, username, icon_url)
