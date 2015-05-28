@@ -35,7 +35,7 @@ def main(build_no):
         slack (msg, token, channel, username, icon_url)
         
     else:
-        local('git push origin :test_push')
+        print local('git push origin :test_push', capture=True)
         msg = 'Sorry, Build %s was failed...' % build_no
         icon_url = ':x:'
         slack (msg, token, channel, username, icon_url)
