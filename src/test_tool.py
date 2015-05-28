@@ -29,7 +29,7 @@ def main(build_no):
 
     if is_setting_ok:
         pr_url = local('/usr/local/bin/hub pull-request -F /tmp/pr_msg', capture=True)
-        local('git merge %s' % pr_url)
+        local('/usr/local/bin/hub merge %s' % pr_url)
         
         msg = '\n'.join(['Build Passing (Merged!)', str(pr_url)])
         
