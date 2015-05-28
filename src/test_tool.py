@@ -32,7 +32,7 @@ def main(build_no):
 
         pl_msg = '\n'.join(['[AutoBuild] Build Passing',
                             '',
-                            'You can confirm Jenkins build log!')
+                            'You can confirm Jenkins build log!'])
         
         with open('/tmp/pr_msg', 'w') as pr_msg: pr_msg.write(pl_msg)
         pr_url = local('/usr/local/bin/hub pull-request -F /tmp/pr_msg', capture=True)
@@ -43,14 +43,14 @@ def main(build_no):
         print local('git push origin :test_push', capture=True)
         
         msg = '\n'.join(['Build Passing (Merged!)', str(pr_url)])
-        icon_url = ':clean:'
+        icon_url = ':jenkins:'
 
         slack (msg, token, channel, username, icon_url)
         
     else:
         print local('git push origin :test_push', capture=True)
         msg = 'Sorry, Build %s was failed...' % build_no
-        icon_url = ':x:'
+        icon_url = ':worried_jenkins:'
         slack (msg, token, channel, username, icon_url)
     
 
