@@ -29,7 +29,10 @@ def main(build_no):
 
     if is_setting_ok:
         pr_url = local('/usr/local/bin/hub pull-request -F /tmp/pr_msg', capture=True)
-        msg = '\n'.join(['Build Passing', str(pr_url)])
+        local('git merge %s' % pr_url)
+        
+        msg = '\n'.join(['Build Passing (Merged!)', str(pr_url)])
+        
         icon_url = ':clean:'
 
         slack (msg, token, channel, username, icon_url)
