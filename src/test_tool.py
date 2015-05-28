@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import requests, sys, os, subprocess
+from fabric.api import local
 
 def slack(msg, token, channel, username="Your_bot_name", icon_url='http://i.imgur.com/eLnR8CX.png'):
     api_baseuri = "https://slack.com/api"
@@ -27,9 +28,18 @@ def main(build_no):
     is_setting_ok = 'OK' in lines
 
     if is_setting_ok:
-        subprocess.check_call(['/usr/local/bin/hub', 'pull-request', '-F', '/tmp/pr_msg'])
+        pr_url = local('/usr/local/bin/hub pull-request -F /tmp/pr_msg', capture=True)
+        msg = '\n'.join(['Build Passing', str(pr_url)])
+        icon_url = ':clean:'
+
+        slack (msg, token, channel, username, icon_url)
+        
     else:
-        subprocess.check_call(['git', 'push', 'origin', ':test_push'])
+        local('git push origin :test_push')
+        msg = 'Sorry, Build %s was failed...' % build_no
+        icon_url = ':x:'
+        slack (msg, token, channel, username, icon_url)
+    
 
     exit(0 if is_setting_ok else 1)
 
@@ -38,5 +48,5 @@ if __name__ == '__main__':
         build_no = sys.argv[1]
     else:
         exit(-1)
-        
+
     main(build_no)
