@@ -3,29 +3,3 @@ PULL REQUEST TEST
 ![Build](http://imgur.com/3EZyddb.png)
 THIS IS TEST PULL REQUEST FROM FOREST SERVER.
 
-# H1
-
-Section
-
-## H2
-
-SubSection
-
-### H3
-
-SubSubSection
-
-```
-multiline
-code area
-```
-
-`None` is `None`
-
--------------------------------
-
-**BOLD**
-_ITALIC_
-
-
-日本語使えるかテスト
