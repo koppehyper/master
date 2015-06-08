@@ -1,8 +1,7 @@
 # Koppe Hyper
 This repo is test.
 
-# About Forest
-Forest is release server.
-It has Jenkins and regular plugins now.
+# You can use Japanese in GitHub
+設定が必要だと思ってたけど普通に日本語が使える
 
-# GitHub Push Test
+
