@@ -2,6 +2,7 @@ general:
   branches:
     only:
       - master
+      - test_branche
 
 machine:
   python:
@@ -11,17 +12,14 @@ dependencies:
   pre:
     - pip install awscli
     - pip install fabric
-    - echo 'aiueo' > /tmp/aiueo
 
 test:
   override:
     - fab test_task
-    - cat /tmp/aiueo
 
 deployment:
-  master:
-    branch: master
+  staging:
+    branch: test_branche
     commands:
-      - python -V
-      - fab -V 
-
+      - chmod 744 hub
+      - ./hub pull-request -m 'Test PullRequest'
