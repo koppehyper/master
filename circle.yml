@@ -1,0 +1,27 @@
+general:
+  branches:
+    only:
+      - master
+
+machine:
+  python:
+    version: 2.6.8
+
+dependencies:
+  pre:
+    - pip install awscli
+    - pip install fabric
+    - echo 'aiueo' > /tmp/aiueo
+
+test:
+  override:
+    - fab test_task
+    - cat /tmp/aiueo
+
+deployment:
+  master:
+    branch: master
+    commands:
+      - python -V
+      - fab -V 
+
