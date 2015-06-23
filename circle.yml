@@ -1,7 +1,6 @@
 general:
   branches:
     only:
-      - master
       - test_branche
 
 machine:
