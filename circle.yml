@@ -21,4 +21,4 @@ deployment:
     branch: test_branche
     commands:
       - chmod 744 hub
-      - ./hub pull-request -m 'Test PullRequest'
+      - ./hub merge `./hub pull-request -m 'Test PullRequest'`
