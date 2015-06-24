@@ -1,5 +1,5 @@
-git config user.name 'koppehyper'
-git config user.email 'koppehyper@gmail.com'
+git config --global user.name 'koppehyper'
+git config --global user.email 'koppehyper@gmail.com'
 
 ./hub pull-request -m 'Test PullRequest'
 git checkout master
