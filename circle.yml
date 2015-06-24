@@ -31,4 +31,5 @@ deployment:
       - git push origin :${CIRCLE_BRANCH}
   master_branch:
     branch: master
+    commands:
       - python send_msg.py
