@@ -24,5 +24,6 @@ deployment:
       - git config --global user.email 'koppehyper@gmail.com'
       - ./hub pull-request -m 'Test PullRequest'
       - git checkout master
+      - git pull
       - git merge --no-ff ${CIRCLE_BRANCH} -m 'Merge master'
       - git push origin master
