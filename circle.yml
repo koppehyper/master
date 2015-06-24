@@ -2,6 +2,7 @@ general:
   branches:
     only:
       - test_branche
+      - master
 
 machine:
   python:
@@ -28,3 +29,6 @@ deployment:
       - git merge --no-ff ${CIRCLE_BRANCH} -m 'Merge master'
       - git push origin master
       - git push origin :${CIRCLE_BRANCH}
+  master_branch:
+    branch: master
+      - python send_msg.py
