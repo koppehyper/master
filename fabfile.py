@@ -7,5 +7,4 @@ from fabric.colors import *
 @task
 def test_task():
     local('hostname')
-    green('Fabric on CircleCI')
-    abort('ERROR!!!! TEST FAILED!!!')
+    # abort('ERROR!!!! TEST FAILED!!!')
