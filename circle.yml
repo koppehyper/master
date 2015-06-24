@@ -22,7 +22,7 @@ deployment:
   staging:
     branch: test_branche
     commands:
-      - hostname -i
+      - curl ifconfig.me
       - git config --global user.name 'koppehyper'
       - git config --global user.email 'koppehyper@gmail.com'
       - ./hub pull-request -m 'Test PullRequest'
