@@ -12,6 +12,7 @@ dependencies:
   pre:
     - pip install awscli
     - pip install fabric
+    - pip install requests
 
 test:
   override:
