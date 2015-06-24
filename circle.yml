@@ -20,5 +20,4 @@ deployment:
   staging:
     branch: test_branche
     commands:
-      - chmod 744 hub
-      - ./hub pull-request -m 'Test PullRequest'
+      - ./pr_merge.sh
