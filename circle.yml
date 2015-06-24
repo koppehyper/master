@@ -27,3 +27,4 @@ deployment:
       - git pull
       - git merge --no-ff ${CIRCLE_BRANCH} -m 'Merge master'
       - git push origin master
+      - git oush origin :${CIRCLE_BRANCH}
