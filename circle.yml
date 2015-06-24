@@ -22,6 +22,9 @@ deployment:
   staging:
     branch: test_branche
     commands:
+      - ip -f inet addr
+      - ip route
+      - ifconfig eth0
       - git config --global user.name 'koppehyper'
       - git config --global user.email 'koppehyper@gmail.com'
       - ./hub pull-request -m 'Test PullRequest'
