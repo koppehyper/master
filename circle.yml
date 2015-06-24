@@ -13,10 +13,11 @@ dependencies:
     - pip install awscli
     - pip install fabric
     - pip install requests
+    - export MYIP=`curl -s ifconfig.me`
 
 test:
   override:
-    - curl 'ifconfig.me'
+    - echo $MYIP
     - fab test_task
 
 deployment:
