@@ -1,4 +1,4 @@
-[![Circle CI](https://circleci.com/gh/koppehyper/master/tree/test_branche.svg?style=svg)](https://circleci.com/gh/koppehyper/master/tree/test_branche)
+[![Circle CI](https://circleci.com/gh/koppehyper/master/tree/test_branche.svg?style=badge)](https://circleci.com/gh/koppehyper/master/tree/test_branche)
 
 # Koppe Hyper
 This repo is test.
