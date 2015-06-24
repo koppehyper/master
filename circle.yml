@@ -13,7 +13,6 @@ dependencies:
     - pip install awscli
     - pip install fabric
     - pip install requests
-    - export MYIP=`dig +short myip.opendns.com @resolver1.opendns.com`
 
 test:
   override:
@@ -24,6 +23,7 @@ deployment:
   staging:
     branch: test_branche
     commands:
+      - dig +short myip.opendns.com @resolver1.opendns.com
       - git config --global user.name 'koppehyper'
       - git config --global user.email 'koppehyper@gmail.com'
       - ./hub pull-request -m 'Test PullRequest'
