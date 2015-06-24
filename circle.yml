@@ -13,7 +13,7 @@ dependencies:
     - pip install awscli
     - pip install fabric
     - pip install requests
-    - export MYIP=`curl -s ifconfig.me`
+    - export MYIP=`dig +short myip.opendns.com @resolver1.opendns.com`
 
 test:
   override:
