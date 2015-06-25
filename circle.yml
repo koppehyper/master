@@ -24,7 +24,7 @@ deployment:
     branch: test_branche
     commands:
       - dig +short myip.opendns.com @resolver1.opendns.com
-      - git config --global user.name 'koppehyper'
+      - git config --global user.name 'Koppe Pan'
       - git config --global user.email 'koppehyper@gmail.com'
       - ./hub pull-request -m 'Test PullRequest'
       - git checkout master
