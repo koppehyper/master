@@ -20,6 +20,7 @@ test:
   override:
     - fab test_task
     - fab open_sg
+    - ssh root@52.69.101.160 'hostname'
     - fab close_sg
 
 deployment:
