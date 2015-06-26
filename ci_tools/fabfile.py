@@ -18,7 +18,7 @@ def close_sg():
     local('aws ec2 revoke-security-group-ingress --group-id %s --protocol tcp --port 22 --cidr %s/32'
           % (sg_id, my_ip))
 
-@task:
+@task
 def test():
     try:
         open_sg()
