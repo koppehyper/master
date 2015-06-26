@@ -22,6 +22,7 @@ test:
     - fab open_sg
     - fab -H root@52.69.101.160 deploy
     - fab close_sg
+    - ./raise_error.sh
   post:
     - echo '----------'
 
