@@ -18,9 +18,8 @@ dependencies:
 
 test:
   override:
-    - echo `dig +short myip.opendns.com @resolver1.opendns.com`
     - fab test_task
-    - aws ec2 describe-security-groups --group-id ${MY_SECURITY_GROUP}
+    - fab open_sg
 
 deployment:
   staging:
