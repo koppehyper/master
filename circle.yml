@@ -28,4 +28,5 @@ deployment:
     branch: test_branche
     commands:
       - fab --fabfile ./ci_tools/fabfile.py git_merge
-      	pwd: test_dir
+      	  pwd: 
+            test_dir
