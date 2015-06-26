@@ -17,8 +17,8 @@ dependencies:
 
 test:
   override:
-    - cd ci_tools
-    - pwd
+    pwd:
+      ci_tools
     - ls
     - fab test_task
     - fab open_sg
