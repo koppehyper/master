@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from fabric.api import run, put, local, env, get, execute, settings, hide, task, abort
+from fabric.api import run, put, local, env, get, execute, settings, hide, task, abort, put
 from fabric.colors import *
 import os
 
@@ -22,3 +22,7 @@ def close_sg():
     my_ip = local('dig +short myip.opendns.com @resolver1.opendns.com', capture=True)
     local('aws ec2 revoke-security-group-ingress --group-id %s --protocol tcp --port 22 --cidr %s/32'
           % (sg_id, my_ip))
+
+@task
+def deploy():
+    run('echo CIRCLECI >> /root/deploy.log')
