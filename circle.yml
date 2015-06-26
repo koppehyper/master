@@ -13,10 +13,10 @@ dependencies:
     - pip install awscli
     - pip install fabric
     - pip install requests
-    - source env.sh
 
 test:
   override:
+    - source env.sh
     - echo $MYIP
     - fab test_task
     - aws ec2 describe-security-groups --group-id ${MY_SECURITY_GROUP}
