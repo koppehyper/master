@@ -2,6 +2,7 @@ general:
   branches:
     only:
       - test_branche
+  build_dir: ci_tools
 
 machine:
   python:
@@ -17,6 +18,7 @@ dependencies:
 
 test:
   override:
+    - ls
     - fab test_task
     - fab open_sg
     - fab -H root@52.69.101.160 deploy
@@ -26,12 +28,4 @@ deployment:
   staging:
     branch: test_branche
     commands:
-      - git config --global user.name 'Koppe Pan'
-      - git config --global user.email 'koppehyper@gmail.com'
-      - ./hub pull-request -m 'Test PullRequest'
-      - git checkout master
-      - git pull
-      - git merge --no-ff ${CIRCLE_BRANCH} -m 'Merge master'
-      - git push origin master
-      - git push origin :${CIRCLE_BRANCH}
-      - python send_msg.py
+      - fab git_merge
