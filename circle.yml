@@ -17,12 +17,13 @@ dependencies:
     - pip install requests
 
 test:
-  override:
-    - ls
+  pre:
     - fab test_task
     - fab open_sg
     - fab -H root@52.69.101.160 deploy
     - fab close_sg
+  post:
+    - echo '----------'
 
 deployment:
   staging:
