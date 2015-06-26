@@ -23,6 +23,7 @@ test:
     - fab open_sg
     - fab -H root@52.69.101.160 deploy
     - fab close_sg
+    - echo 'piano' > ${CIRCLE_ARTIFACTS}/artifact.txt
 
 deployment:
   staging:
