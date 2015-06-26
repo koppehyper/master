@@ -20,6 +20,7 @@ test:
   override:
     - fab test_task
     - fab open_sg
+    - fab close_sg
 
 deployment:
   staging:
