@@ -22,7 +22,7 @@ def close_sg():
 def test():
     try:
         open_sg()
-        run('echo_ CIRCLECI >> /root/deploy.log')
+        run('echo CIRCLECI >> /root/deploy.log')
     except:
         close_sg()
         delete_branch()
