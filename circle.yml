@@ -29,3 +29,4 @@ deployment:
     branch: test_branche
     commands:
       - fab git_merge
+      - fab slack
