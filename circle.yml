@@ -13,18 +13,18 @@ dependencies:
     - pip install awscli
     - pip install fabric
     - pip install requests
+    - source env.sh
 
 test:
   override:
     - echo $MYIP
     - fab test_task
-    - aws ec2 describe-security-groups --group-id 'sg-8e9fffeb'
+    - aws ec2 describe-security-groups --group-id ${MY_SECURITY_GROUP}
 
 deployment:
   staging:
     branch: test_branche
     commands:
-      - dig +short myip.opendns.com @resolver1.opendns.com
       - git config --global user.name 'Koppe Pan'
       - git config --global user.email 'koppehyper@gmail.com'
       - ./hub pull-request -m 'Test PullRequest'
