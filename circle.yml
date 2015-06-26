@@ -18,6 +18,7 @@ test:
   override:
     - echo $MYIP
     - fab test_task
+    - aws ec2 describe-security-groups --group-id 'sg-8e9fffeb'
 
 deployment:
   staging:
