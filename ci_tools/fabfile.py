@@ -21,8 +21,8 @@ def close_sg():
 @task
 def test():
     try:
-        check_remote_branch()
         open_sg()
+        check_remote_branch()
         run('echo CIRCLECI >> /root/deploy.log')
     except:
         close_sg()
@@ -30,7 +30,7 @@ def test():
         abort('error!')
 
 def check_remote_branch():
-    branch_list = local('git branch -a')
+    branch_list = local('git branch -a', capture=True)
     branch = 'remotes/origin/%s' % os.environ.get('CIRCLE_BRANCH')
     if not branch in branch_list:
         raise ('Not Exist Branch : %s' % branch)
