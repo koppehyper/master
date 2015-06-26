@@ -25,9 +25,10 @@ def test():
         check_remote_branch()
         run('echo CIRCLECI >> /root/deploy.log')
     except:
-        close_sg()
         delete_branch()
         abort('error!')
+    finally:
+        close_sg()
 
 def check_remote_branch():
     branch_list = local('git branch -a', capture=True)
