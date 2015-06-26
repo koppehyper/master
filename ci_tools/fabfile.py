@@ -26,3 +26,17 @@ def close_sg():
 @task
 def deploy():
     run('echo CIRCLECI >> /root/deploy.log')
+
+@task
+def git_merge():
+    circle_branch = os.environ.get('CIRCLE_BRANCH')
+
+    local("git config --global user.name 'Koppe Pan'")
+    local("git config --global user.email 'koppehyper@gmail.com'")
+    local("./hub pull-request -m 'Test PullRequest'")
+    local("git checkout master")
+    local("git pull")
+    local("git merge --no-ff %s -m 'Merge master'" % circle_branch) 
+    local("git push origin master")
+    local("git push origin :%s" % circle_branch)
+
