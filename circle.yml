@@ -2,6 +2,8 @@ general:
   branches:
     only:
       - test_branche
+    ignore:
+      - master
   build_dir: ci_tools
 
 machine:
@@ -18,17 +20,11 @@ dependencies:
 
 test:
   pre:
-    - echo 'PRE TEST START'
     - fab test_task
     - fab open_sg
     - fab -H root@52.69.101.160 deploy
     - fab close_sg
-    - ./raise_error.sh
-    - echo 'PRE TEST END'
-  post:
-    - echo 'POST TEST START'
-    - ./raise_error.sh
-    - echo 'POST TEST END'
+    - ./error.sh
 
 deployment:
   staging:
