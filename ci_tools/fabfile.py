@@ -26,6 +26,7 @@ def test():
     except:
         close_sg()
         delete_branch()
+        abort('error!')
 
 def delete_branch():
     circle_branch = os.environ.get('CIRCLE_BRANCH')
