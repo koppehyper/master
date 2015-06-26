@@ -32,6 +32,7 @@ def test():
 
 def check_remote_branch():
     branch_list = local('git branch -a', capture=True)
+    print branch_list
     branch = 'remotes/origin/%s' % os.environ.get('CIRCLE_BRANCH')
     if not branch in branch_list:
         raise ('Not Exist Branch : %s' % branch)
