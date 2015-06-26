@@ -17,17 +17,14 @@ dependencies:
 
 test:
   override:
-    pwd:
-      ci_tools
     - ls
-    - fab test_task
-    - fab open_sg
-    - fab -H root@52.69.101.160 deploy
-    - fab close_sg
+    - fab -f ./ci_tools/fabfile.py test_task
+    - fab -f ./ci_tools/fabfile.py open_sg
+    - fab -f ./ci_tools/fabfile.py -H root@52.69.101.160 deploy
+    - fab -f ./ci_tools/fabfile.py close_sg
 
 deployment:
   staging:
     branch: test_branche
     commands:
-      - cd ci_tools
-      - fab git_merge
+      - fab --fabfile ./ci_tools/fabfile.py git_merge
