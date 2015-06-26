@@ -18,6 +18,8 @@ dependencies:
 test:
   override:
     - cd ci_tools
+    - pwd
+    - ls
     - fab test_task
     - fab open_sg
     - fab -H root@52.69.101.160 deploy
