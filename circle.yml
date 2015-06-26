@@ -20,11 +20,7 @@ dependencies:
 
 test:
   pre:
-    - fab test_task
-    - fab open_sg
-    - fab -H root@52.69.101.160 deploy
-    - fab close_sg
-    - ./error.sh
+    - fab -H root@52.69.101.160 test
 
 deployment:
   staging:
