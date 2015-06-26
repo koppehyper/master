@@ -60,3 +60,23 @@ def slack():
 
     res = requests.get(uri, params=param, verify=False)
 
+
+@task
+def artifact_test():
+    ev = '''CIRCLE_PROJECT_USERNAME
+CIRCLE_PROJECT_REPONAME
+CIRCLE_BRANCH
+CIRCLE_SHA1
+CIRCLE_COMPARE_URL
+CIRCLE_BUILD_NUM
+CIRCLE_PREVIOUS_BUILD_NUM
+CI_PULL_REQUESTS
+CI_PULL_REQUEST
+CIRCLE_ARTIFACTS
+CIRCLE_USERNAME
+CIRCLE_TEST_REPORTS'''
+
+    c = ev.splitlines()
+    
+    for x in c:
+        print "%-25s ... %s" % (x, os.environ.get(x))
