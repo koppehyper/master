@@ -23,7 +23,6 @@ test:
     - fab open_sg
     - fab -H root@52.69.101.160 deploy
     - fab close_sg
-    - fab artifact_test | tee ${CIRCLE_ARTIFACTS}/artifact.txt
 
 deployment:
   staging:
