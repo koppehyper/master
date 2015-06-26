@@ -2,6 +2,7 @@ general:
   branches:
     only:
       - test_branche
+  build_dir: ci_tools
 
 machine:
   python:
@@ -18,15 +19,13 @@ dependencies:
 test:
   override:
     - ls
-    - fab -f ./ci_tools/fabfile.py test_task
-    - fab -f ./ci_tools/fabfile.py open_sg
-    - fab -f ./ci_tools/fabfile.py -H root@52.69.101.160 deploy
-    - fab -f ./ci_tools/fabfile.py close_sg
+    - fab test_task
+    - fab open_sg
+    - fab -H root@52.69.101.160 deploy
+    - fab close_sg
 
 deployment:
   staging:
     branch: test_branche
     commands:
-      - fab --fabfile ./ci_tools/fabfile.py git_merge
-      	  pwd: 
-            test_dir
+      - fab git_merge
