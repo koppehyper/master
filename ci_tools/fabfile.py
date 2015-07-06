@@ -13,6 +13,7 @@ def get_my_ip():
     my_ip = local('dig +short myip.opendns.com @resolver1.opendns.com',
                   capture=True)
     return my_ip
+
     
 def open_sg():
     sg_id = os.environ.get('MY_SECURITY_GROUP')
