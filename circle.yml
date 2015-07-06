@@ -20,7 +20,8 @@ dependencies:
 
 test:
   pre:
-    - echo 'Test'
+    - python -m py_compile fabfile.py
+
 
 deployment:
   staging:
