@@ -35,7 +35,6 @@ def test():
         open_sg()
         check_remote_branch()
         run('echo `date` >> /root/deploy.log')
-        raise Exception('FAILED')
         git_merge()
         slack()
     except:
