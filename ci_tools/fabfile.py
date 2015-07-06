@@ -14,7 +14,7 @@ def get_my_ip():
                   capture=True)
     return my_ip
 
-    
+
 def open_sg():
     sg_id = os.environ.get('MY_SECURITY_GROUP')
     my_ip = get_my_ip()
