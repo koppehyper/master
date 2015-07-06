@@ -35,12 +35,13 @@ def test():
         open_sg()
         check_remote_branch()
         run('echo `date` >> /root/deploy.log')
+        raise Exception('FAILED')
         git_merge()
         slack()
     except:
         delete_branch()
-        abort('error!')
         slack(msg='Error! Please handle this problem!')
+        abort('error!')
     finally:
         close_sg()
 
