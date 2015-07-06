@@ -20,7 +20,9 @@ dependencies:
 
 test:
   pre:
-    - python -m py_compile fabfile.py
+    branch: test_branch
+    commands:
+      - python -m py_compile fabfile.py
 
 
 deployment:
