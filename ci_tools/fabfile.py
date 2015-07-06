@@ -9,18 +9,22 @@ import os
 import requests
 
 
-def open_sg():
-    sg_id = os.environ.get('MY_SECURITY_GROUP')
+def get_my_ip():
     my_ip = local('dig +short myip.opendns.com @resolver1.opendns.com',
                   capture=True)
+    return my_ip
+
+
+def open_sg():
+    sg_id = os.environ.get('MY_SECURITY_GROUP')
+    my_ip = get_my_ip()
     local('aws ec2 authorize-security-group-ingress --group-id ' +
           '%s --protocol tcp --port 22 --cidr %s/32' % (sg_id, my_ip))
 
 
 def close_sg():
     sg_id = os.environ.get('MY_SECURITY_GROUP')
-    my_ip = local('dig +short myip.opendns.com @resolver1.opendns.com',
-                  capture=True)
+    my_ip = get_my_ip()
     local('aws ec2 revoke-security-group-ingress --group-id ' +
           '%s --protocol tcp --port 22 --cidr %s/32' % (sg_id, my_ip))
 
