@@ -77,7 +77,7 @@ def slack(msg=None):
     repo_name = os.environ.get('CIRCLE_PROJECT_REPONAME')
     build_no = os.environ.get('CIRCLE_BUILD_NUM')
 
-    if not msg:
+    if msg is None:
         msg = 'MERGED > https://circleci.com/gh/%s/%s/%s' % (
             project_name, repo_name, build_no)
 
