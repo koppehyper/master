@@ -24,9 +24,12 @@ def test():
         open_sg()
         check_remote_branch()
         run('echo `date` >> /root/deploy.log')
+        git_merge()
+        slack()
     except:
         delete_branch()
         abort('error!')
+        slack(msg='Error! Please handle this problem!')
     finally:
         close_sg()
 
@@ -44,7 +47,6 @@ def delete_branch():
     local("git push origin :%s" % circle_branch)
 
 
-@task
 def git_merge():
     circle_branch = os.environ.get('CIRCLE_BRANCH')
     local("git config --global user.name 'Koppe Pan'")
@@ -56,8 +58,8 @@ def git_merge():
     local("git push origin master")
     local("git push origin :%s" % circle_branch)
 
-@task 
-def slack():
+
+def slack(msg=None):
     api_baseuri = "https://slack.com/api"
     method = "chat.postMessage"
     uri = "%s/%s" % (api_baseuri, method)
@@ -67,7 +69,8 @@ def slack():
     repo_name = os.environ.get('CIRCLE_PROJECT_REPONAME')
     build_no = os.environ.get('CIRCLE_BUILD_NUM')
 
-    msg = 'MERGED > https://circleci.com/gh/%s/%s/%s' % (project_name, repo_name, build_no)
+    if not msg:
+        msg = 'MERGED > https://circleci.com/gh/%s/%s/%s' % (project_name, repo_name, build_no)
     
     channel = '#testroom'
     username = 'Hogehoge'

@@ -10,7 +10,7 @@ machine:
   python:
     version: 2.6.8
   environment:
-    MY_SECURITY_GROUP: 'sg-8e9fffeb' 
+    MY_SECURITY_GROUP: 'sg-8e9fffeb'
 
 dependencies:
   pre:
@@ -20,11 +20,10 @@ dependencies:
 
 test:
   pre:
-    - fab -H root@52.69.101.160 test
+    - echo 'Test'
 
 deployment:
   staging:
     branch: test_branche
     commands:
-      - fab git_merge
-      - fab slack
+      - fab -H root@52.69.101.160 test
