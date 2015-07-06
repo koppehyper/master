@@ -23,12 +23,13 @@ def test():
     try:
         open_sg()
         check_remote_branch()
-        run('echo CIRCLECI >> /root/deploy.log')
+        run('echo `date` >> /root/deploy.log')
     except:
         delete_branch()
         abort('error!')
     finally:
         close_sg()
+
 
 def check_remote_branch():
     branch_list = local('git branch -a', capture=True)
@@ -36,6 +37,7 @@ def check_remote_branch():
     branch = 'remotes/origin/%s' % os.environ.get('CIRCLE_BRANCH')
     if not branch in branch_list:
         raise ('Not Exist Branch : %s' % branch)
+
 
 def delete_branch():
     circle_branch = os.environ.get('CIRCLE_BRANCH')
