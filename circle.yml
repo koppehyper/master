@@ -17,11 +17,12 @@ dependencies:
     - pip install awscli
     - pip install fabric
     - pip install requests
+    - pip install flake8
 
 test:
   pre:
     - python -m py_compile fabfile.py
-
+    - flake8 fabfile.py
 
 deployment:
   staging:
