@@ -1,9 +1,8 @@
 general:
   branches:
     only:
+      - test
       - test_branche
-    ignore:
-      - master
   build_dir: ci_tools
 
 machine:
