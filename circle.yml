@@ -29,5 +29,4 @@ deployment:
   staging:
     branch: test_branche
     commands:
-      - ssh -v test-vox.hdetrial.jp 'echo HELLO > /tmp/gr.txt'
-      - ansible testgroup -i ./hosts -m command -a "touch /tmp/test.txt"
+      - echo 'test'
